@@ -1,10 +1,13 @@
 class CountdownTimer {
+  intervalId = null;
   constructor({ selector, targetDate }) {
     this.refs(selector);
+    if (!intervalId) return;
     this.intervalId = setInterval(() => {
       targetDate > Date.now()
         ? this.updateClockface(targetDate - Date.now())
-        : clearInterval(this.intervalId);
+        : clearInterval(this.intervalId),
+        (this.intervalId = null);
     }, 1000);
   }
 
