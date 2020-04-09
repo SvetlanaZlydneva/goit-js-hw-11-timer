@@ -1,8 +1,8 @@
 class CountdownTimer {
   intervalId = null;
   constructor({ selector, targetDate }) {
+    if (this.intervalId) return;
     this.refs(selector);
-    if (!intervalId) return;
     this.intervalId = setInterval(() => {
       targetDate > Date.now()
         ? this.updateClockface(targetDate - Date.now())
